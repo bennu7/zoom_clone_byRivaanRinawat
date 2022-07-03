@@ -8,6 +8,9 @@ class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  // *setting login user agar tidak ulang login kembali setelah login
+  Stream<User?> get authChanges => _auth.authStateChanges();
+
   Future<bool> signInWithGoogle(BuildContext context) async {
     bool res = false;
     try {
